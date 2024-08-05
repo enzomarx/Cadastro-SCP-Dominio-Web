@@ -1,19 +1,38 @@
 import pandas as pd
 import pyautogui
 import time
+        
 
-time.sleep(4)
-pyautogui.PAUSE = 1
+def ts():
+    time.sleep(1.5)
 
-tabela = pd.read_csv(r'C:\Users\PC\Desktop\Cadastro-SCP-Dominio-Web\data\matsocioscp.csv')
+time.sleep(2)    
+
+tabela = pd.read_csv(r'C:\Users\Winlitepro\Desktop\Cadastro-SCP-Dominio-Web\data\matsocioscp.csv')
+
 
 for linha in tabela.index:
     pyautogui.click(1089, 209) #clica em Editar
+    ts()
     mat = tabela.loc[linha, "mat"]
-    pyautogui.write(str(tabela.loc[linha, "mat"]))
-    pyautogui.hotkey("shift", "ctrl", "left", "left", "left", "left", "left", "left")
-    socio = tabela.loc[linha, "SOCIO"]
-    pyautogui.write(str(tabela.loc[linha, "SOCIO"]))
-    pyautogui.click(x=1036, y=244) #clica em gravar
+    pyautogui.write(str(mat))
+    ts()
+    pyautogui.press("tab")
+    ts()
+    pyautogui.press("tab")
+    ts()
+    pyautogui.press("backspace")
+    ts()
+    socio = tabela.loc[linha, "socio"]
+    pyautogui.write(str(socio))
+    ts()
+    pyautogui.write(" SCP ")
+    ts()
+    pyautogui.write(str(mat))
+    ts()
+    pyautogui.click(x=1082, y=244) #clica em gravar
+    ts()
+    pyautogui.click(x=750, y=462) #clica em yes
+    time.sleep(3)
 
 
